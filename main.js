@@ -20,15 +20,98 @@ const mockUpStrand = () => {
 
 // * Your Code:
 
-/*
-! Task 1
-* Since you need to create multiple objects, create a factory function pAequorFactory() that has two parameters:
+const pAequorFactory = (num, dnaBases) => {
+  // 3
+  return {
+    _specimenNum: num, 
+    _dna: dnaBases,
+    
+    get specimenNum() {
+      return this._specimenNum;
+    },
 
-  * - The first parameter is a number (no two organisms should have the same number).
-  *  -The second parameter is an array of 15 DNA bases.
-* pAequorFactory() should return an object that contains the properties specimenNum and dna that correspond to the parameters provided.
+    get dna() {
+      return this._dna;
+    },
 
-* You’ll also add more methods to this returned object in the later steps.
-*/
+    set specimenNum(num) {
+      if (typeof num === 'number') {
+        this._specimenNum = num;
+      } else {
+        console.log(`This SPECIMEN NUMBER is INVALID! Provided ${num} is a ${typeof num}, it should be a number!`);
+      } 
+    },
 
-// Tasks 1:
+    set dna(dnaBases) {
+      if (dnaBases.length === 15) {
+        this._dna = dnaBases;
+      } else {
+        console.log(`This DNA BASE is INVALID, it should contain 15 DNA bases, but contains ${dnaBases.length} bases!`);
+      }
+    },
+    
+    // 4 -----------------------------------------
+    mutate() {
+      // Randomly selecting a DNA Base in the existing DNA
+      let baseSelection = this._dna.indexOf(this._dna[Math.floor(Math.random() * this._dna.length)]);
+      console.log(`${`\nDNA Base '` + this._dna[baseSelection] + `'`} was selected to mutate. This selection is at index: ${baseSelection}!`);
+      console.log(this._dna);
+
+      // Randomly selecting a DNA Base to mutate the existing DNA with
+      let baseAssignment;
+
+      // Ensure that the new base is different from the current one
+      do {
+        baseAssignment = returnRandBase();
+      } while (this._dna[baseSelection] === baseAssignment);
+
+      // Mutating the existing DNA
+      this._dna[baseSelection] = baseAssignment;
+
+      console.log(`It was randomly mutated to DNA Base '${baseAssignment}'!\n`);
+      console.log(this._dna);
+      console.log('\n');
+    },
+
+    // 5 -----------------------------------------
+    compareDNA(pAequor) {
+      // Create a list of the same DNA bases in the same positions
+      let specimen1 = this._dna;
+      let specimen2 = pAequor.dna;
+      let specimensSamePositionBases = [];
+      for (let i = 0; i < specimen1.length; i++) {
+        for (let j = 0; j < specimen2.length; j++) {
+          if (specimen1[i] === specimen2[j]) {
+            specimensSamePositionBases.push(specimen1[i]);
+          }
+        }
+      }
+
+      console.log(`\nBoth specimens have these DNA Bases '[${samePositionBases}]' in common!`);
+      console.log(`specimen #1 and specimen #2 have 25% DNA in common!\n`);
+    },
+
+    // 6 -----------------------------------------
+    willLikelySurvive() {
+
+    }
+  }
+};
+
+
+const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
+// Testing:
+console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
+console.log('pAequorInstance1 - SPECIMEN NUMBER:', pAequorInstance1.specimenNum);
+console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
+// pAequorInstance1.specimenNum = '1';
+// pAequorInstance1.dna = ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C']
+// console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
+// pAequorInstance1.mutate();
+
+
+const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', 'A', 'T', 'T', 'G', 'T', 'G', 'C', 'G'])
+console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
+console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
+console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
+pAequorInstance2.compareDNA();
