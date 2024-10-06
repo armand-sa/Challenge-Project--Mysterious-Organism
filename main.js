@@ -87,8 +87,8 @@ const pAequorFactory = (num, dnaBases) => {
         }
       }
 
-      console.log(`\nBoth specimens have these DNA Bases '[${samePositionBases}]' in common!`);
-      console.log(`specimen #1 and specimen #2 have 25% DNA in common!\n`);
+      console.log(`\nBoth specimens have these DNA Bases '[${specimensSamePositionBases}]' in common!`);
+      console.log(`\nspecimen #1 and specimen #2 have 25% DNA in common!\n`);
     },
 
     // 6 -----------------------------------------
@@ -114,4 +114,4 @@ const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', '
 console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
 console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
 console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
-pAequorInstance2.compareDNA();
+pAequorInstance2.compareDNA(pAequorInstance1);
