@@ -76,19 +76,23 @@ const pAequorFactory = (num, dnaBases) => {
     // 5 -----------------------------------------
     compareDNA(pAequor) {
       // Create a list of the same DNA bases in the same positions
-      let specimen1 = this._dna;
-      let specimen2 = pAequor.dna;
-      let specimensSamePositionBases = [];
-      for (let i = 0; i < specimen1.length; i++) {
-        for (let j = 0; j < specimen2.length; j++) {
-          if (specimen1[i] === specimen2[j]) {
-            specimensSamePositionBases.push(specimen1[i]);
-          }
+      const specimen1 = this._dna;
+      const specimen2 = pAequor.dna;
+      const specimensSamePositionBases = [];
+
+      for (i = 0; i < 15; i++) {
+        if (specimen1[i] === specimen2[i]) {
+          specimensSamePositionBases.push(specimen1[i])
         }
       }
 
-      console.log(`\nBoth specimens have these DNA Bases '[${specimensSamePositionBases}]' in common!`);
-      console.log(`\nspecimen #1 and specimen #2 have 25% DNA in common!\n`);
+      console.log('\nBoth specimens have these DNA Bases in common:', specimensSamePositionBases)
+      console.log(`The number of DNA Bases, out of 15, they have in common is: ${specimensSamePositionBases.length}!`);
+
+      // Calculate the DNA in common
+      let inCommonCalculation = (specimensSamePositionBases.length / 15) * 100;
+      let inCommonDNA = inCommonCalculation.toFixed();
+      console.log(`Specimen #1 and Specimen #2 have ${inCommonDNA}% DNA in common!\n`);
     },
 
     // 6 -----------------------------------------
@@ -114,4 +118,4 @@ const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', '
 console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
 console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
 console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
-pAequorInstance2.compareDNA(pAequorInstance1);
+// pAequorInstance2.compareDNA(pAequorInstance1);
