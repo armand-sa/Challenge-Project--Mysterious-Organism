@@ -103,6 +103,7 @@ const pAequorFactory = (num, dnaBases) => {
 };
 
 
+// Instance 1
 const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
 // Testing:
 console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
@@ -114,6 +115,7 @@ console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
 // pAequorInstance1.mutate();
 
 
+// Instance 2
 const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', 'A', 'T', 'T', 'G', 'T', 'G', 'C', 'G'])
 console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
 console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
