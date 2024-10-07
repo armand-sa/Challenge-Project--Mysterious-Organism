@@ -115,35 +115,12 @@ const pAequorFactory = (num, dnaBases) => {
         // console.log('The DNA IS NOT made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
         return false;
       }
-      console.log(countC, countG);
+      // console.log(countC, countG);
     }
   }
 };
 
-// 7 -----------------------------------------
-const createSurvivingStrands = () => {
-  const DNA_Strand = mockUpStrand();
-  const DNA_StrandNumber = 0;
-  // Create the object instances
-  const instance = pAequorFactory(DNA_StrandNumber, DNA_Strand)
-  console.log(instance)
-  // Create an array to store instances where likely survival is true
-  const resultSurviving = [];
-  console.log(resultSurviving)
-  
-  // Check that the instances are likely to willLikelySurvive
-  /*
-  do (instance.willLikelySurvive()) {
-    resultSurviving.push(instance)
-    console.log(resultSurviving)
-    DNA_StrandNumber++;
-    console.log(DNA_StrandNumber)
-  } while (resultSurviving.length < 30)
-  */
-};
-createSurvivingStrands();
-
-// TEST Instance 1
+// TESTING -  Instance 1
 // const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
 // Testing:
 // console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
@@ -156,10 +133,37 @@ createSurvivingStrands();
 // console.log(pAequorInstance1.willLikelySurvive());
 
 
-// TEST Instance 2
+// TESTING - Instance 2
 // const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', 'A', 'T', 'T', 'G', 'T', 'G', 'C', 'G'])
 // console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
 // console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
 // console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
 // pAequorInstance2.compareDNA(pAequorInstance1);
 // console.log(pAequorInstance2.willLikelySurvive());
+
+// 7 -----------------------------------------
+const createSurvivingStrands = () => {
+  // Create an array to store instances where likely survival is true
+  let resultSurviving = [];
+  // Create the specimen number
+  let DNA_StrandNumber = 0;
+  
+  // Check that the instances are likely to willLikelySurvive
+  while (resultSurviving.length < 30) {
+    
+    // Create a unique DNA sequence
+    let DNA_Strand = mockUpStrand();
+    // Create the object instances
+    let instance = pAequorFactory(DNA_StrandNumber, DNA_Strand)
+    if (instance.willLikelySurvive()) {
+      console.log(instance.dna)
+      resultSurviving.push(instance)
+      DNA_StrandNumber++;
+    }
+  };
+
+  console.log(resultSurviving)
+  return resultSurviving;
+};
+createSurvivingStrands();
+
