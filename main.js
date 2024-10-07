@@ -99,35 +99,52 @@ const pAequorFactory = (num, dnaBases) => {
     // 6 -----------------------------------------
     willLikelySurvive() {
       // Count C's and convert to a percentage
-      const countC = this._dna.filter(base => base === 'C').length
+      const countC = this._dna.filter(base => base === 'C').length;
       const calcCountC = Math.round((countC / 15) * 100);
-      console.log(`\nThe percentage of 'C' DNA bases in the strand is: ${calcCountC.toFixed()}%`)
+      console.log(`\nThe percentage of 'C' DNA bases in the strand is: ${calcCountC.toFixed()}%`);
 
       // Count G's and convert to a percentage
-      const countG = this._dna.filter(base => base === 'G').length
-      console.log(countC, countG)
+      const countG = this._dna.filter(base => base === 'G').length;
+      const calcCountG = Math.round((countG / 15) * 100);
+      console.log(`The percentage of 'G' DNA bases in the strand is: ${calcCountG.toFixed()}%`);
+
+      if (calcCountC >= 60 || calcCountG  >= 60) {
+        console.log('The DNA IS made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
+        return true;
+      } else {
+        console.log('The DNA IS NOT made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
+        return false;
+      }
+      console.log(countC, countG);
     }
   }
 };
 
+const createSurvivingStrands = () => {
+  let DNA_Strand = mockUpStrand();
+  let DNA_StrandNumber = 0;
+  if pAequorFactory
 
-// Instance 1
-const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
+};
+
+
+// TEST Instance 1
+// const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
 // Testing:
-console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
-console.log('pAequorInstance1 - SPECIMEN NUMBER:', pAequorInstance1.specimenNum);
-console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
+// console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
+// console.log('pAequorInstance1 - SPECIMEN NUMBER:', pAequorInstance1.specimenNum);
+// console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
 // pAequorInstance1.specimenNum = '1';
 // pAequorInstance1.dna = ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C']
 // console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
 // pAequorInstance1.mutate();
-pAequorInstance1.willLikelySurvive();
+// console.log(pAequorInstance1.willLikelySurvive());
 
 
-// Instance 2
-const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', 'A', 'T', 'T', 'G', 'T', 'G', 'C', 'G'])
-console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
-console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
-console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
+// TEST Instance 2
+// const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', 'A', 'T', 'T', 'G', 'T', 'G', 'C', 'G'])
+// console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
+// console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
+// console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
 // pAequorInstance2.compareDNA(pAequorInstance1);
-pAequorInstance2.willLikelySurvive();
+// console.log(pAequorInstance2.willLikelySurvive());
