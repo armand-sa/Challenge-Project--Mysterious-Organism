@@ -70,7 +70,6 @@ const pAequorFactory = (num, dnaBases) => {
 
       console.log(`It was randomly mutated to DNA Base '${baseAssignment}'!\n`);
       console.log(this._dna);
-      console.log('\n');
     },
 
     // 5 -----------------------------------------
@@ -121,16 +120,16 @@ const pAequorFactory = (num, dnaBases) => {
 };
 
 // TESTING -  Instance 1
-// const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
+const pAequorInstance1 = pAequorFactory(1, mockUpStrand());
 // Testing:
-// console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
-// console.log('pAequorInstance1 - SPECIMEN NUMBER:', pAequorInstance1.specimenNum);
-// console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
+console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
+console.log('pAequorInstance1 - SPECIMEN NUMBER:', pAequorInstance1.specimenNum);
+console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
 // pAequorInstance1.specimenNum = '1';
 // pAequorInstance1.dna = ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C']
 // console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
-// pAequorInstance1.mutate();
-// console.log(pAequorInstance1.willLikelySurvive());
+pAequorInstance1.mutate();
+console.log('\nIs pAequor likely to survive:', pAequorInstance1.willLikelySurvive());
 
 
 // TESTING - Instance 2
