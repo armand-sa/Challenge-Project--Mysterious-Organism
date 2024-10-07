@@ -101,18 +101,18 @@ const pAequorFactory = (num, dnaBases) => {
       // Count C's and convert to a percentage
       const countC = this._dna.filter(base => base === 'C').length;
       const calcCountC = Math.round((countC / 15) * 100);
-      console.log(`\nThe percentage of 'C' DNA bases in the strand is: ${calcCountC.toFixed()}%`);
+      // console.log(`\nThe percentage of 'C' DNA bases in the strand is: ${calcCountC.toFixed()}%`);
 
       // Count G's and convert to a percentage
       const countG = this._dna.filter(base => base === 'G').length;
       const calcCountG = Math.round((countG / 15) * 100);
-      console.log(`The percentage of 'G' DNA bases in the strand is: ${calcCountG.toFixed()}%`);
+      // console.log(`The percentage of 'G' DNA bases in the strand is: ${calcCountG.toFixed()}%`);
 
       if (calcCountC >= 60 || calcCountG  >= 60) {
-        console.log('The DNA IS made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
+        // console.log('The DNA IS made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
         return true;
       } else {
-        console.log('The DNA IS NOT made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
+        // console.log('The DNA IS NOT made up of at least 60% "C" or "G" bases!\nThe likelihood of survival is:');
         return false;
       }
       console.log(countC, countG);
@@ -120,13 +120,26 @@ const pAequorFactory = (num, dnaBases) => {
   }
 };
 
+// 7 -----------------------------------------
 const createSurvivingStrands = () => {
-  let DNA_Strand = mockUpStrand();
-  let DNA_StrandNumber = 0;
-  if pAequorFactory
-
+  const DNA_Strand = mockUpStrand();
+  const DNA_StrandNumber = 0;
+  // Create the object instances
+  const instance = pAequorFactory(DNA_StrandNumber, DNA_Strand)
+  console.log(instance)
+  // Create an array to store instances where likely survival is true
+  const resultSurviving = [];
+  console.log(resultSurviving)
+  
+  // Check that the instances are likely to willLikelySurvive
+  do (instance.willLikelySurvive()) {
+    resultSurviving.push(instance)
+    console.log(resultSurviving)
+    DNA_StrandNumber++;
+    console.log(DNA_StrandNumber)
+  } while (resultSurviving.length < 30)
 };
-
+createSurvivingStrands();
 
 // TEST Instance 1
 // const pAequorInstance1 = pAequorFactory(1, ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C', 'A'])
