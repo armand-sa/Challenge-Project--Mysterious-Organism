@@ -80,6 +80,7 @@ const pAequorFactory = (num, dnaBases) => {
       const specimen2 = pAequor.dna;
       const specimensSamePositionBases = [];
 
+      // Get DNA Bases in common and add to specimensSamePositionBases
       for (i = 0; i < 15; i++) {
         if (specimen1[i] === specimen2[i]) {
           specimensSamePositionBases.push(specimen1[i])
@@ -97,7 +98,14 @@ const pAequorFactory = (num, dnaBases) => {
 
     // 6 -----------------------------------------
     willLikelySurvive() {
+      // Count C's and convert to a percentage
+      const countC = this._dna.filter(base => base === 'C').length
+      const calcCountC = Math.round((countC / 15) * 100);
+      console.log(`\nThe percentage of 'C' DNA bases in the strand is: ${calcCountC.toFixed()}%`)
 
+      // Count G's and convert to a percentage
+      const countG = this._dna.filter(base => base === 'G').length
+      console.log(countC, countG)
     }
   }
 };
@@ -113,6 +121,7 @@ console.log('pAequorInstance1 - DNA:', pAequorInstance1.dna);
 // pAequorInstance1.dna = ['G', 'T', 'T', 'A', 'G', 'G', 'C', 'G', 'G', 'G', 'T', 'A', 'T', 'C']
 // console.log('\npAequorInstance1 - OBJECT:', pAequorInstance1);
 // pAequorInstance1.mutate();
+pAequorInstance1.willLikelySurvive();
 
 
 // Instance 2
@@ -121,3 +130,4 @@ console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
 console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
 console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
 // pAequorInstance2.compareDNA(pAequorInstance1);
+pAequorInstance2.willLikelySurvive();
