@@ -132,12 +132,14 @@ const createSurvivingStrands = () => {
   console.log(resultSurviving)
   
   // Check that the instances are likely to willLikelySurvive
+  /*
   do (instance.willLikelySurvive()) {
     resultSurviving.push(instance)
     console.log(resultSurviving)
     DNA_StrandNumber++;
     console.log(DNA_StrandNumber)
   } while (resultSurviving.length < 30)
+  */
 };
 createSurvivingStrands();
 
