@@ -133,11 +133,12 @@ console.log('\nIs pAequor likely to survive:', pAequorInstance1.willLikelySurviv
 
 
 // TESTING - Instance 2
-// const pAequorInstance2 = pAequorFactory(2, ['G', 'C', 'A', 'A', 'A', 'G', 'T', 'A', 'T', 'T', 'G', 'T', 'G', 'C', 'G'])
-// console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
-// console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
-// console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
-// pAequorInstance2.compareDNA(pAequorInstance1);
+const pAequorInstance2 = pAequorFactory(2, mockUpStrand())
+console.log('\npAequorInstance2 - OBJECT:', pAequorInstance2);
+console.log('pAequorInstance2 - SPECIMEN NUMBER:', pAequorInstance2.specimenNum);
+console.log('pAequorInstance2 - DNA:', pAequorInstance2.dna);
+pAequorInstance2.compareDNA(pAequorInstance1);
+console.log('\n');
 // console.log(pAequorInstance2.willLikelySurvive());
 
 // 7 -----------------------------------------
